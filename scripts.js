@@ -1,4 +1,4 @@
-var display = document.getElementById("display")
+var display = document.querySelector("p")
 var numBtn = document.querySelectorAll("#numericBtn")
 var clearBtn = document.getElementById("clearBtn")
 var addBtn = document.getElementById("add")
@@ -27,7 +27,6 @@ function divide(num1, num2){
 }
 
 
-
 function input(event) {
     let digit = event.target.innerText;
     numbers.push(digit);
@@ -37,7 +36,6 @@ function input(event) {
 numBtn.forEach(button => {
     button.addEventListener("click", input);
 });
-
 
 function operate(num1, operator, num2) {
     switch (operator) {
@@ -54,7 +52,6 @@ function operate(num1, operator, num2) {
     }
 }
 
-
 addBtn.addEventListener("click", function () {
     if (numbers.length > 0) {
         const currentNumber = Number(numbers.join(""));
@@ -64,13 +61,12 @@ addBtn.addEventListener("click", function () {
         }else if (operator){
             addend = operate(addend, operator, currentNumber)
         }
-        console.log(`addend after addition: ${addend}`);
+        console.log(`addend after ${operator} ${addend}`);
         display.innerHTML = addend;
         numbers = [];
         operator = '+'
     }
 });
-
 
 minusBtn.addEventListener("click", function(){
     if (numbers.length > 0){
@@ -81,7 +77,7 @@ minusBtn.addEventListener("click", function(){
         }else if (operator){
             addend = operate(addend, operator, currentNumber)
         }
-        console.log(`sum: ${addend}`);
+        console.log(`addend after ${operator} ${addend}`);
         display.innerHTML = addend
         numbers = []
         operator = '-'

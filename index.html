@@ -8,50 +8,43 @@
 
 </head>
 <body>
-    <div class = display-container>
-        <h1 id = "display"></h1>
+
+    <div class = calculator-body>
+        <div class = display-container>
+            <p>0</p>
+        </div>
+        <div class = buttons-container> 
+            <div class = first-row>
+                <button type="clearBtn" onclick="clearDisplay()">clear</button>
+                <button id = "postiveNegative">+/-</button>
+                <button id = "percentage">%</button>
+                <button id="operateBtn" onclick="input(event)">/</button>
+            </div>
+            <div class = second-row>
+                <button id="numericBtn">7</button>  
+                <button id="numericBtn">8</button>
+                <button id="numericBtn">9</button>
+                <button id="operateBtn" onclick="input(event)">*</button>
+            </div>
+            <div class = third-row>
+                <button id="numericBtn">4</button>
+                <button id="numericBtn">5</button>
+                <button id="numericBtn">6</button>
+                <button id="subtract">-</button>
+            </div>
+            <div class = fourth-row>
+                <button id="numericBtn">1</button>
+                <button id="numericBtn">2</button>
+                <button id="numericBtn">3</button>
+                <button id="add">+</button>
+            </div>
+            <div class = fifth-row>
+                <button id="numericBtn">0</button>
+                <button id="decimal">.</button>
+                <button id="result">=</button>
+            </div>
+        </div>
     </div>
-
-    <div class = buttons-container> 
-        <button id="numericBtn">1</button>
-        <button id="numericBtn">2</button>
-        <button id="numericBtn">3</button>
-        <button id="numericBtn">4</button>
-        <button id="numericBtn">5</button>
-        <button id="numericBtn">6</button>
-        <button id="numericBtn">7</button>
-        <button id="numericBtn">8</button>
-        <button id="numericBtn">9</button>
-        <button id="numericBtn">0</button>
-        <button id="add">+</button>
-        <button id="subtract">-</button>
-        <button id="operateBtn" onclick="input(event)">*</button>
-        <button id="operateBtn" onclick="input(event)">/</button>
-        <button id="result">=</button>
-        <button type="clearBtn" onclick="clearDisplay()">clear</button>
-       
-        <!-- <button type="button">2</button>
-        <button type="button">3</button>
-        <button type="button">4</button>
-        <button type="button">5</button>
-        <button type="button">6</button>
-        <button type="button">7</button>
-        <button type="button">8</button>
-        <button type="button">9</button>
-        <button type="button">0</button>
-        <button type="button">+</button>
-        <button type="button">-</button>
-        <button type="button">*</button>
-        <button type="button">/</button>
-        <button type="button">clear</button> -->
-    
-    </div>
-
-
-
-
-
-
 
     <script src = "scripts.js"></script>
 </body>
