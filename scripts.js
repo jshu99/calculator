@@ -15,15 +15,15 @@ function add(num1, num2){
 }
 
 function subtract(num1, num2){
-    result = num1 - num2
+    return num1 - num2
 }
 
 function multiply(num1, num2){
-    result = num1 * num2
+    return num1 * num2
 }
 
 function divide(num1, num2){
-    result = num1 / num2
+    return num1 / num2
 }
 
 
@@ -76,18 +76,15 @@ minusBtn.addEventListener("click", function(){
     if (numbers.length > 0){
         const currentNumber = Number(numbers.join(""))
         console.log(`numbers[]: ${currentNumber}`);
-        if (operator === '+') {
-            addend.push(currentNumber);
-            const sum = addend.reduce((a, b) => a + b, 0)
-            display.innerHTML = sum;
-            addend.splice(0, addend.length, sum);
+        if (addend === null) {
+            addend = currentNumber
+        }else if (operator){
+            addend = operate(addend, operator, currentNumber)
         }
-        operator = '-'
-        const sum = addend[0] - currentNumber;
-        console.log(`sum: ${sum}`);
-        display.innerHTML = sum
-        addend.splice(0, addend.length, sum);
+        console.log(`sum: ${addend}`);
+        display.innerHTML = addend
         numbers = []
+        operator = '-'
     }
 })
 
