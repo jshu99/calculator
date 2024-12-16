@@ -1,6 +1,7 @@
 var display = document.querySelector("p")
 var numBtn = document.querySelectorAll("#numericBtn")
 var clearBtn = document.getElementById("clearBtn")
+
 var addBtn = document.querySelector("#add")
 var minusBtn = document.getElementById("subtract")
 var multiplyBtn = document.getElementById("multiply")
@@ -10,6 +11,7 @@ var resultBtn = document.getElementById("result")
 let numbers = []; //stores individual digits from calculator input
 let addend = null; //array that stores whole numbers joined together from numbers
 let operator = null;
+
 
 function add(num1, num2){
     return num1 + num2;
@@ -29,7 +31,8 @@ function divide(num1, num2){
 
 
 function input(event) {
-    let digit = event.target.innerText;
+    const digit = event.target.innerText;
+    if (numbers.length >= 8) return; 
     numbers.push(digit);
     display.innerHTML = numbers.join("");
 }
@@ -39,19 +42,30 @@ numBtn.forEach(button => {
 });
 
 function operate(num1, operator, num2) {
+    let result;
     switch (operator) {
         case '+':
-            return result = add(num1, num2);
+            result = add(num1, num2);
+            break;
         case '-':
-            return result = subtract(num1, num2);
+            result = subtract(num1, num2);
+            break;
         case '*':
-            return result = multiply(num1, num2);
+            result = multiply(num1, num2);
+            break;
         case '/':
-            return result = divide(num1, num2);
+            result = divide(num1, num2);
+            break;
         default:
-            return result; // Default behavior when no operator is set
+            throw new Error("Invalid operator");
     }
+    const resultString = result.toString();
+    if (resultString.includes('.') && resultString.split('.')[1].length > 3) {
+        return parseFloat(result.toFixed(3));
+    }
+    return result;
 }
+
 
 addBtn.addEventListener("click", function () {
     if (numbers.length > 0) { //check if numbers array contains something
@@ -87,18 +101,49 @@ minusBtn.addEventListener("click", function(){
 
 
 multiplyBtn.addEventListener("click", function(){
-    alert()
+    if (numbers.length > 0){
+        const currentNumber = Number(numbers.join(""))
+        console.log(`numbers[]: ${currentNumber}`);
+        if (addend === null) {
+            addend = currentNumber
+        }else if (operator){
+            addend = operate(addend, operator, currentNumber)
+        }
+        console.log(`addend after ${operator} ${addend}`);
+        display.innerHTML = addend
+        numbers = []
+        operator = '*'
+    }
 })
 
 
 divideBtn.addEventListener("click", function(){
-    alert()
+    if (numbers.length > 0){
+        const currentNumber = Number(numbers.join(""))
+        console.log(`numbers[]: ${currentNumber}`);
+        if (addend === null) {
+            addend = currentNumber
+        }else if (operator){
+            addend = operate(addend, operator, currentNumber)
+        }
+        console.log(`addend after ${operator} ${addend}`);
+        display.innerHTML = addend
+        numbers = []
+        operator = '/'
+    }
 })
 
 
 
-resultBtn.addEventListener("click", generateResult)
 
+
+
+
+
+
+
+
+resultBtn.addEventListener("click", generateResult)
 
 function generateResult(){
     if (numbers.length > 0){
@@ -120,6 +165,10 @@ function clearDisplay() {
     numbers = [];
     addend = [];
 }
+
+
+
+
 
 
 // function operationHandler(operation){
