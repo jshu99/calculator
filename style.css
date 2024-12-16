@@ -17,17 +17,15 @@ body{
     /* margin-bottom: 5px; */
     justify-content: right;
     align-items: center;
+    display:flex;
 }
 
 .display-container, p{
-    font-size: 100  px;
-    display:flex;
-    margin-right: 25px;
-    margin-top: 25px;
-    margin-bottom: 0px;
+    font-size: 70px;
+    margin:0;
+    margin-right: 15px;
+    margin-top: 15px;
 }
-
-
 
 
 button{

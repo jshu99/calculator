@@ -1,14 +1,15 @@
 var display = document.querySelector("p")
 var numBtn = document.querySelectorAll("#numericBtn")
 var clearBtn = document.getElementById("clearBtn")
-var addBtn = document.getElementById("add")
+var addBtn = document.querySelector("#add")
 var minusBtn = document.getElementById("subtract")
+var multiplyBtn = document.getElementById("multiply")
+var divideBtn = document.getElementById("divide")
 var resultBtn = document.getElementById("result")
 
 let numbers = []; //stores individual digits from calculator input
 let addend = null; //array that stores whole numbers joined together from numbers
 let operator = null;
-
 
 function add(num1, num2){
     return num1 + num2;
@@ -40,23 +41,23 @@ numBtn.forEach(button => {
 function operate(num1, operator, num2) {
     switch (operator) {
         case '+':
-            return add(num1, num2);
+            return result = add(num1, num2);
         case '-':
-            return subtract(num1, num2);
+            return result = subtract(num1, num2);
         case '*':
-            return multiply(num1, num2);
+            return result = multiply(num1, num2);
         case '/':
-            return divide(num1, num2);
+            return result = divide(num1, num2);
         default:
-            return num2; // Default behavior when no operator is set
+            return result; // Default behavior when no operator is set
     }
 }
 
 addBtn.addEventListener("click", function () {
-    if (numbers.length > 0) {
-        const currentNumber = Number(numbers.join(""));
+    if (numbers.length > 0) { //check if numbers array contains something
+        const currentNumber = Number(numbers.join("")); 
             console.log(`numbers[]: ${currentNumber}`);
-        if (addend === null){
+        if (addend === null){ //
             addend = currentNumber
         }else if (operator){
             addend = operate(addend, operator, currentNumber)
@@ -85,6 +86,40 @@ minusBtn.addEventListener("click", function(){
 })
 
 
+multiplyBtn.addEventListener("click", function(){
+    alert()
+})
+
+
+divideBtn.addEventListener("click", function(){
+    alert()
+})
+
+
+
+resultBtn.addEventListener("click", generateResult)
+
+
+function generateResult(){
+    if (numbers.length > 0){
+        const currentNumber = Number(numbers.join(""))
+        console.log(`numbers[]: ${currentNumber}`);
+        if (addend === null) {
+            addend = currentNumber
+        } else if (operator){
+            addend = operate(addend, operator, currentNumber)
+        }
+        console.log(`addend after ${operator} ${addend}`)
+        display.innerHTML = addend
+        operator = null;
+    }
+}
+
+function clearDisplay() {
+    display.innerHTML = ""; // Clear the content
+    numbers = [];
+    addend = [];
+}
 
 
 // function operationHandler(operation){
@@ -135,14 +170,5 @@ minusBtn.addEventListener("click", function(){
 
 
 
-// resultBtn.addEventListener("click", function(){
-//     display.innerHTML = sum;
-// })
 
 
-function clearDisplay() {
-    let displayElement = document.getElementById("display"); // Fetch the element inside the function
-    displayElement.innerHTML = ""; // Clear the content
-    numbers = [];
-    addend = [];
-}
